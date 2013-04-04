@@ -1,0 +1,1 @@
+return Def.ActorFrame { LoadFont("Common Normal") .. { Text=Var "Element"; }; };
