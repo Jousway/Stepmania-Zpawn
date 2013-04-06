@@ -2,8 +2,7 @@
 local t = Def.ActorFrame {
 	OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-96;zoomy,0;sleep,0.5;decelerate,0.25;zoomy,1);
 	OffCommand=cmd(bouncebegin,0.15;zoomx,0);
-	Def.Sprite {
-		Texture="CDTitle Con.png";
+	LoadActor(THEME:GetPathG("CDTitle", "Con")) .. {
 		InitCommand=cmd(diffuse,Color("Orange"));
 	};
 	LoadFont("Common Normal") .. {
