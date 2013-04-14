@@ -195,7 +195,7 @@ end
 --[[ end option rows ]]
 -- Jousway's silly edits
 local tChoices = {};
-for i=1,20  do
+for i=1,30  do
 tChoices[i] = ((i-1)*50)+50;
 end;
 
