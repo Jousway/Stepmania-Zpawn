@@ -1,5 +1,3 @@
--- urg getting all the bpm's so anoying, for now lets just base on the first bpm that goes
-
 local t = Def.ActorFrame {
 	LoadFont("Common Normal") .. {
 		Name="SpeedModP1";
@@ -80,13 +78,6 @@ local function Update(self)
 			end;
 		end;
 	end;
-					
-	if GAMESTATE:GetNumPlayersEnabled() == 2 then
-		speedmodp1:x(SCREEN_CENTER_X-100);
-		speedmodp2:x(SCREEN_CENTER_X+100);
-		speeddisp1:x(SCREEN_CENTER_X-100);
-		speeddisp1:x(SCREEN_CENTER_X+100);
-	end;
 	
 	if GAMESTATE:IsHumanPlayer(PLAYER_1) then
 	
@@ -119,6 +110,10 @@ local function Update(self)
 			speeddisp1:settext( "Average BPM: " .. speedp1 );
 			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. ",M" .. speedp1);
 		end;
+		if GAMESTATE:GetNumPlayersEnabled() == 2 then
+			speedmodp1:x(SCREEN_CENTER_X-100);
+			speeddisp1:x(SCREEN_CENTER_X-100);
+		end;
 	end;
 	if GAMESTATE:IsHumanPlayer(PLAYER_2) then
 	
@@ -150,6 +145,10 @@ local function Update(self)
 			speedmodp2:settext( "Actual SpeedMod: M" .. speedp2 );
 			speeddisp2:settext( "Average BPM: " .. speedp2 );
 			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. ",M" .. speedp2);
+		end;
+		if GAMESTATE:GetNumPlayersEnabled() == 2 then
+			speedmodp2:x(SCREEN_CENTER_X+100);
+			speeddisp2:x(SCREEN_CENTER_X+100);
 		end;
 	end;
 end;
