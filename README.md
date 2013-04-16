@@ -77,7 +77,7 @@ And then it just defines an Xmod with 4.41 as 4.41x.
 ```
 ```
 WIP Notes:
-Need to write Average Mod System, fallbacks to C550 for now.
+Got Amod system now, but not failproof, need to update in future.
 ```
 
 ### Noteskins
