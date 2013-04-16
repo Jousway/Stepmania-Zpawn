@@ -66,8 +66,14 @@ So it combines the values of the first selection and second selection to get act
 Examples:
 Constant Mod + 200 = C200
 Multiplication Mod + 300 = 3.0x (better known as xmod)
-Average Mod + 400 = A400 (Nonexistent atm, need to write system)
+Average Mod + 400 = A400 
 Maximum Mod + 500 = M500
+
+Average Mod Notes:
+Amod works like this, it takes the bpm's the song has and checks the one that exists the longest.
+Then it does Defined Amod/Avarage BPM, so basicly, if the song has a bpm of 170.
+And you defined the Amod as A750 it does 750/170 which is rounded off to 4.41.
+And then it just defines an Xmod with 4.41 as 4.41x.
 ```
 ```
 WIP Notes:
