@@ -77,7 +77,7 @@ local function Update(self)
 		if song then
 			local ChartLenghtInSec = song:GetStepsSeconds();
 			local Getp1Radar = GAMESTATE:GetCurrentSteps(PLAYER_1):GetRadarValues(PLAYER_1);
-			local P1Taps = Getp1Radar:GetValue('RadarCategory_TapsAndHolds')+Getp1Radar:GetValue('RadarCategory_Jumps');
+			local P1Taps = Getp1Radar:GetValue('RadarCategory_TapsAndHolds')+Getp1Radar:GetValue('RadarCategory_Jumps')+Getp1Radar:GetValue('RadarCategory_Hands');
 			P1NPS:settext(string.format("%0.0f",P1Taps/ChartLenghtInSec));
 		else
 			P1NPS:settext("0");
@@ -91,7 +91,7 @@ local function Update(self)
 		if song then
 			local ChartLenghtInSec = song:GetStepsSeconds();
 			local Getp2Radar = GAMESTATE:GetCurrentSteps(PLAYER_2):GetRadarValues(PLAYER_2);
-			local P2Taps = Getp2Radar:GetValue('RadarCategory_TapsAndHolds')+Getp2Radar:GetValue('RadarCategory_Jumps');
+			local P2Taps = Getp2Radar:GetValue('RadarCategory_TapsAndHolds')+Getp2Radar:GetValue('RadarCategory_Jumps')+Getp2Radar:GetValue('RadarCategory_Hands');
 			P2NPS:settext(string.format("%0.0f",P2Taps/ChartLenghtInSec));
 		else
 			P2NPS:settext("0");
