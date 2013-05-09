@@ -41,7 +41,7 @@ Still need to write the noteskin size, theme side is done.
 * default_JousEdit_ScreenSelectMusic *Finished*
 
 ```
-Actually 2 diffrent codes, but both are for ScreenSelectMusic, So in same theme.
+Actually 3 diffrent codes, but they all are for ScreenSelectMusic, So in same theme.
 
 -- cdtitle Resizer --
 Resizes the cdtitle between a value of 60x80, so we dont get the hassel of giant cdtitles
@@ -49,6 +49,9 @@ Also puts it between the p1 and p2 pane's.
 
 -- Song Background Changer --
 Changes the background to selected song.
+
+-- NPS Calculator --
+In place of the old CDTitle, It now displays the songs NPS.
 ```
 
 * default_JousEdit_SpeedMod_System *WIP*
