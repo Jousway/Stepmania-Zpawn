@@ -61,7 +61,7 @@ local t = Def.ActorFrame {
 
 
 -- update function to change it actively
-local function Update(self)
+	local function Update(self)
 	local red;
 	local green;
 	local blue;

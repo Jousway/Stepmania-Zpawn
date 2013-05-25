@@ -1,84 +1,24 @@
 local t = Def.ActorFrame {
 	LoadFont("Common Normal") .. {
 		Name="SpeedModP1";
-		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-173,diffuse,0,0,0,1;strokecolor,Color("Black"));
+		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-173;diffuse,1,1,1,1;strokecolor,Color("Black"));
 	};
 	LoadFont("Common Normal") .. {
 		Name="SpeedDisp1";
-		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-186,diffuse,0,0,0,1;strokecolor,Color("Black"));
+		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-186;diffuse,1,1,1,1;strokecolor,Color("Black"));
 	};
 	LoadFont("Common Normal") .. {
 		Name="SpeedModP2";
-		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-173,diffuse,0,0,0,1;strokecolor,Color("Black"));
+		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-173;diffuse,1,1,1,1;strokecolor,Color("Black"));
 	};
 	LoadFont("Common Normal") .. {
 		Name="SpeedDisp2";
-		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-186,diffuse,0,0,0,1;strokecolor,Color("Black"));
+		InitCommand=cmd(zoom,0.5;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-186;diffuse,1,1,1,1;strokecolor,Color("Black"));
 	};
 };
 
 local function Update(self)
 
-	local bpmtime = GAMESTATE:GetCurrentSong():GetTimingData():GetBPMsAndTimes();
-	local numbbpms = 0; for _ in pairs(bpmtime) do numbbpms = numbbpms + 1 end;
-	
-	local Btime = {};
-	local Bbpm = {};
-	local AverageBPM;
-	local bpmt1;
-	local bpmt2;
-	local bpmt3;
-	
-	for i=1,#bpmtime do
-		_, _, Btime[i], Bbpm[i] = string.find(bpmtime[i], "(%d+%p%d+)=(%d+%p%d+)");	
-	end;
-	
-	for v=1,#bpmtime do
-		if numbbpms == 1 then
-			AverageBPM = Bbpm[1];				
-		elseif Btime[v+2] ~= nil then
-			bpmt1 = Btime[v+1] - Btime[v];
-			bpmt2 = Btime[v+2] - Btime[v+1];
-			if bpmt1 > bpmt2 then
-				if bpmt3 == nil then
-					AverageBPM = Bbpm[v];
-					bpmt3 = bpmt1;
-				elseif bpmt1 > bpmt3 then 
-					AverageBPM = Bbpm[v];
-					bpmt3 = bpmt1;
-				end;
-			else
-				if bpmt3 == nil then
-					AverageBPM = Bbpm[v+1];
-					bpmt3 = bpmt2;
-				elseif bpmt2 > bpmt3 then
-					AverageBPM = Bbpm[v+1];
-					bpmt3 = bpmt2;
-				end;
-			end;
-		elseif Btime[v+1] ~= nil then
-			bpmt1 = Btime[v+1] - Btime[v];
-			bpmt2 = GAMESTATE:GetCurrentSong():GetLastSecond() - Btime[v+1];
-			if bpmt1 > bpmt2 then
-				if bpmt3 == nil then
-					AverageBPM = Bbpm[v];
-					bpmt3 = bpmt1;
-				elseif bpmt1 > bpmt3 then 
-					AverageBPM = Bbpm[v];
-					bpmt3 = bpmt1;
-				end;
-			else
-				if bpmt3 == nil then
-					AverageBPM = Bbpm[v+1];
-				elseif bpmt2 > bpmt3 then
-					bpmt3 = bpmt2;
-					AverageBPM = Bbpm[v+1];
-					bpmt3 = bpmt2;
-				end;
-			end;
-		end;
-	end;
-	
 	if GAMESTATE:IsHumanPlayer(PLAYER_1) then
 	
 		local speedmodp1 = self:GetChild("SpeedModP1");
@@ -99,12 +39,12 @@ local function Update(self)
 			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. ",C" .. speedp1);
 		elseif displayp1 == "2" then
 			speedmodp1:settext( "Actual SpeedMod: " .. speedp1/100 .. "x" );
-			speeddisp1:settext( "Average BPM: " .. string.format("%03.0f", AverageBPM*(speedp1/100)) );
+			speeddisp1:settext( "Average BPM: " .. string.format("%03.0f", AverageBPM()*(speedp1/100)) );
 			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. speedp1/100 .. "x");
 		elseif displayp1 == "3" then
 			speedmodp1:settext( "Actual SpeedMod: A" .. speedp1 );
 			speeddisp1:settext( "Average BPM: " .. speedp1 );
-			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. speedp1/AverageBPM .."x");
+			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. speedp1/AverageBPM() .."x");
 		else
 			speedmodp1:settext( "Actual SpeedMod: M" .. speedp1 );
 			speeddisp1:settext( "Average BPM: " .. speedp1 );
@@ -135,12 +75,12 @@ local function Update(self)
 			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. ",C" .. speedp2);
 		elseif displayp2 == "2" then
 			speedmodp2:settext( "Actual SpeedMod: " .. speedp2/100 .. "x" );
-			speeddisp2:settext( "Average BPM: " .. string.format("%03.0f", AverageBPM*(speedp2/100)) );
+			speeddisp2:settext( "Average BPM: " .. string.format("%03.0f", AverageBPM()*(speedp2/100)) );
 			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. speedp2/100 .. "x");
 		elseif displayp2 == "3" then
 			speedmodp2:settext( "Actual SpeedMod: A" .. speedp2 );
 			speeddisp2:settext( "Average BPM: " .. speedp2 );
-			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. speedp2/AverageBPM .."x");
+			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. speedp2/AverageBPM() .."x");
 		else
 			speedmodp2:settext( "Actual SpeedMod: M" .. speedp2 );
 			speeddisp2:settext( "Average BPM: " .. speedp2 );

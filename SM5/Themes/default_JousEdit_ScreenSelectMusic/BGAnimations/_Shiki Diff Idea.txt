@@ -1,0 +1,18 @@
+Fri[04:19:58]PM Shiki: basically, NPA / NPS + Jack Weighting * Conditional Multiplier for Gimmicks.
+Fri[04:20:34]PM Shiki: so ((NPA/NPS) + JM))*CMG
+Fri[04:20:47]PM Shiki: Which should output your desired number
+Fri[04:21:13]PM Shiki: CMG calculation is the hardest part
+Fri[04:21:14]PM SkyNet : CMG calculation is the medic in a chat
+Fri[04:21:20]PM Shiki: What
+Fri[04:22:14]PM Shiki: I'd have to design the weighting and multiplier system that is flexible. For example, Speedups value, stops, stutters, Slowdowns, Neg BPM. Mines, Freezes, Lifts.
+Fri[04:22:36]PM Shiki: Say a song has 10 notes
+Fri[04:23:00]PM Shiki: 8th 8th 8th 8th 8th 16th 16th 16th 16th 16th, would output 12th NPA.
+Fri[04:23:42]PM Shiki: That is an example, its how close the notes are together, not the timings.
+Fri[04:24:57]PM Shiki: and say the song has a 10 NPS run, you;d go 12*10 *Say there was jacks* +22, you now have 142 difficulty,
+It has no gimmicks, times a 0.25 gimmick multiplier.
+Fri[04:25:03]PM Shiki: Would give you a file output of 35.5
+Fri[04:25:41]PM Shiki: Gimmick multiplier can be higher, fine tune it properly AND the foruma should be
+Fri[04:25:48]PM Shiki: NPA * NPS + JM * CMG
+Fri[04:25:55]PM Shiki: which will give you good difficulties
+Fri[04:26:40]PM Shiki: CMG needs to be defined as 1.00 Has insane difficult gimmicks.
+Fri[04:26:56]PM Shiki: and 0.XY as no gimmicks at all.
