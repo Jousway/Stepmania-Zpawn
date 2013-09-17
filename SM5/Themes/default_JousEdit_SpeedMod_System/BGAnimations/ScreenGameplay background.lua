@@ -15,7 +15,9 @@ local function Update(self)
 		local CXmodp1 = string.format("%0.0f",GAMESTATE:GetPlayerState(PLAYER_1):GetSongPosition():GetCurBPS()*60);
 		local optionsp1 = GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString("ModsLevel_Preferred");
 		if displayp1 == "4" then
-			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. 750/CXmodp1 .. "x");
+			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. speedp1/CXmodp1 .. "x");
+		elseif displayp1 == "3" then
+			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. speedp1/AverageBPM() .."x");
 		end;
 	end;
 	if GAMESTATE:IsHumanPlayer(PLAYER_2) then
@@ -32,7 +34,9 @@ local function Update(self)
 		local CXmodp2 = string.format("%0.0f",GAMESTATE:GetPlayerState(PLAYER_2):GetSongPosition():GetCurBPS()*60);
 		local optionsp2 = GAMESTATE:GetPlayerState(PLAYER_2):GetPlayerOptionsString("ModsLevel_Preferred");
 		if displayp2 == "4" then
-			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. 750/CXmodp2 .. "x");
+			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. speedp2/CXmodp2 .. "x");
+		elseif displayp2 == "3" then
+			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. speedp2/AverageBPM() .."x");
 		end;
 	end;
 end;
