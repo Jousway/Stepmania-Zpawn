@@ -45,6 +45,9 @@ local function Update(self)
 			speedmodp1:settext( "Actual SpeedMod: A" .. speedp1 );
 			speeddisp1:settext( "Average BPM: " .. speedp1 );
 			GAMESTATE:GetPlayerState(PLAYER_1):SetPlayerOptions('ModsLevel_Preferred', optionsp1 .. "," .. speedp1/AverageBPM() .."x");
+		elseif displayp1 == "4" then
+			speedmodp1:settext( "Actual SpeedMod: CX" .. speedp1 );
+			speeddisp1:settext( "Average BPM: " .. speedp1 );
 		else
 			speedmodp1:settext( "Actual SpeedMod: M" .. speedp1 );
 			speeddisp1:settext( "Average BPM: " .. speedp1 );
@@ -81,6 +84,9 @@ local function Update(self)
 			speedmodp2:settext( "Actual SpeedMod: A" .. speedp2 );
 			speeddisp2:settext( "Average BPM: " .. speedp2 );
 			GAMESTATE:GetPlayerState(PLAYER_2):SetPlayerOptions('ModsLevel_Preferred', optionsp2 .. "," .. speedp2/AverageBPM() .."x");
+		elseif displayp2 == "4" then
+			speedmodp2:settext( "Actual SpeedMod: CX" .. speedp2 );
+			speeddisp2:settext( "Average BPM: " .. speedp2 );
 		else
 			speedmodp2:settext( "Actual SpeedMod: M" .. speedp2 );
 			speeddisp2:settext( "Average BPM: " .. speedp2 );

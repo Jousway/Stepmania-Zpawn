@@ -6,15 +6,17 @@ end;
 function SpeedDisplay()
 	local t = {
 		Name = "SpeedDisplay";
-		LayoutType = "ShowAllInRow";
+		LayoutType = "ShowOneInRow";
 		SelectType = "SelectOne";
 		OneChoiceForAllPlayers = false;
 		ExportOnChange = true;
-		Choices = { 'Constant Mod','Multiplication Mod','Average Mod','Maximum Mod' };
+		Choices = { 'Constant Mod','Multiplication Mod','Average Mod','ConstantX Mod','Maximum Mod' };
 		LoadSelections = function(self, list, pn)
 			local pName = ToEnumShortString(pn)
 			if ReadPrefFromFile("SpeedDisplay"..pName) ~= nil then
-			if GetUserPref("SpeedDisplay"..pName) == "4" then
+			if GetUserPref("SpeedDisplay"..pName) == "5" then
+					list[5] = true;
+				elseif GetUserPref("SpeedDisplay"..pName) == "4" then
 					list[4] = true;
 				elseif GetUserPref("SpeedDisplay"..pName) == "3" then
 					list[3] = true;
@@ -31,7 +33,9 @@ function SpeedDisplay()
 		SaveSelections = function(self, list, pn)
 			local val;
 			local pName = ToEnumShortString(pn)
-			if list[4] then
+			if list[5] then
+				val = "5";
+			elseif list[4] then
 				val = "4";
 			elseif list[3] then
 				val = "3";
