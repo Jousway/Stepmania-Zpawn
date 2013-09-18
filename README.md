@@ -77,6 +77,13 @@ Amod works like this, it takes the bpm's the song has and checks the one that ex
 Then it does Defined Amod/Avarage BPM, so basicly, if the song has a bpm of 170.
 And you defined the Amod as A750 it does 750/170 which is rounded off to 4.41.
 And then it just defines an Xmod with 4.41 as 4.41x.
+
+CXmod Notes:
+CXmod is a combination of Constant and Multiplication mods.
+What it does is everytime the BPM changes it forces a new calculation for the new display speed.
+So if you use CX750, when the song is on a part which uses 380bpm, It displays it like its bpm is 750.
+But when the song changes to 120bpm instead of slowing the display speed down.
+It forces the 120bpm to display like 750, Resulting in a load of speedup and slowdown effects.
 ```
 ```
 WIP Notes:
